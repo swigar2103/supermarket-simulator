@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mini Supermarket 3D</title>
+  <link rel="stylesheet" href="./styles.css" />
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.164.1/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.164.1/examples/jsm/"
+      }
+    }
+  </script>
+</head>
+<body>
+  <div id="app">
+    <aside class="panel">
+      <h1>小型超市仿真</h1>
+      <p class="subtitle">基础运营 + 布局编辑</p>
+
+      <div class="group">
+        <h2>运营系统</h2>
+        <div class="buttons">
+          <button id="toggle-open">开店</button>
+          <button id="restock-all">全货架补货（$20）</button>
+        </div>
+        <div class="buttons" style="margin-top: 8px;">
+          <button id="toggle-camera">切换到俯视相机</button>
+          <button id="open-regulator">资源调控器</button>
+        </div>
+        <div class="stats" id="stats">
+          <div>营业状态：<span id="stat-open">关店</span></div>
+          <div>资金：<span id="stat-cash">$100</span></div>
+          <div>库存：<span id="stat-stock">0</span></div>
+          <div>顾客：<span id="stat-customers">0</span></div>
+          <div>销量：<span id="stat-sales">0</span></div>
+        </div>
+        <div class="regulator hidden" id="regulator-panel">
+          <label>资金 <input id="reg-cash" type="number" value="100" /></label>
+          <label>库存 <input id="reg-stock" type="number" value="28" /></label>
+          <label>顾客数量 <input id="reg-customers" type="number" value="0" /></label>
+          <label>客流间隔(秒) <input id="reg-spawn" type="number" value="4.5" step="0.1" /></label>
+          <label>商品售价($) <input id="reg-price" type="number" value="8" step="1" /></label>
+          <div class="buttons">
+            <button id="apply-regulator">应用参数</button>
+            <button id="spawn-one-customer">+1 顾客</button>
+            <button id="clear-customers">清空顾客</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="group">
+        <h2>置办设施</h2>
+        <div class="buttons">
+          <button data-place="shelf">货架</button>
+          <button data-place="freezer">冰柜</button>
+          <button data-place="storage">储物架</button>
+          <button data-place="terminal">前台终端</button>
+          <button data-place="cart">取货车</button>
+        </div>
+      </div>
+
+      <div class="group">
+        <h2>货物操作</h2>
+        <div class="buttons">
+          <button id="add-goods">给选中货架补货</button>
+          <button id="spawn-goods">放置货箱</button>
+        </div>
+      </div>
+
+      <div class="group">
+        <h2>布局操作</h2>
+        <div class="buttons">
+          <button id="save-layout">保存布局</button>
+          <button id="load-layout">读取布局</button>
+          <button id="reset-layout">重置布局</button>
+        </div>
+        <p class="tips">
+          鼠标左键选中设施；点击地面可放置。<br />
+          键盘：方向键移动、R旋转、Delete删除。<br />
+          第一人称：WASD移动，鼠标看向，Esc释放鼠标。
+        </p>
+      </div>
+
+      <div class="group">
+        <h2>当前状态</h2>
+        <div id="status">准备就绪</div>
+      </div>
+    </aside>
+    <main id="scene-wrap"></main>
+  </div>
+  <div id="crosshair">+</div>
+
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
