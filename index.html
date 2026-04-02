@@ -36,6 +36,8 @@
           <div>库存：<span id="stat-stock">0</span></div>
           <div>顾客：<span id="stat-customers">0</span></div>
           <div>销量：<span id="stat-sales">0</span></div>
+          <div>待配送箱数：<span id="stat-ship-pending">0</span></div>
+          <div>异常件：<span id="stat-ship-ex">0</span></div>
         </div>
         <div class="regulator hidden" id="regulator-panel">
           <label>资金 <input id="reg-cash" type="number" value="100" /></label>
@@ -80,18 +82,45 @@
         <p class="tips">
           鼠标左键选中设施；点击地面可放置。<br />
           键盘：方向键移动、R旋转、Delete删除。<br />
-          第一人称：WASD移动，鼠标看向，Esc释放鼠标。
+          第一人称：WASD移动，Shift疾跑，Space跳跃，Esc释放鼠标。<br />
+          RFID流程：先拿工具再操作，T贴标，E扫码/搬货，G丢道具。
         </p>
       </div>
 
       <div class="group">
         <h2>当前状态</h2>
+        <div class="selected-name">选中对象：<span id="selected-name">无</span></div>
+        <div class="selected-name">使用说明：<span id="selected-help">无</span></div>
+        <div class="selected-name">手持道具：<span id="held-tool">无</span></div>
         <div id="status">准备就绪</div>
       </div>
     </aside>
     <main id="scene-wrap"></main>
   </div>
   <div id="crosshair">+</div>
+  <div id="selection-tag" class="selection-tag hidden">对象</div>
+  <div id="lcd-overlay" class="lcd-overlay hidden">
+    <div class="lcd-card">
+      <h3>仓配系统 LCD 终端</h3>
+      <div class="lcd-grid">
+        <div>仓库可贴标箱：<span id="lcd-warehouse-count">0</span></div>
+        <div>已登记配送单：<span id="lcd-manifest-count">0</span></div>
+        <div>卡车在途箱数：<span id="lcd-truck-count">0</span></div>
+        <div>门店待收货：<span id="lcd-store-pending-count">0</span></div>
+        <div>门店已扫描：<span id="lcd-store-scanned-count">0</span></div>
+        <div>异常记录：<span id="lcd-exception-count">0</span></div>
+      </div>
+      <div class="buttons">
+        <button id="lcd-register-manifest">登记门店配送信息</button>
+        <button id="lcd-load-truck">调配货车出库</button>
+        <button id="lcd-deliver-truck">运输到目标门店</button>
+        <button id="lcd-confirm-receive">按扫描结果更新门店库存</button>
+        <button id="lcd-clear-exception">异常通知已处理</button>
+        <button id="lcd-close">退出LCD界面</button>
+      </div>
+      <div id="lcd-log" class="lcd-log">等待操作...</div>
+    </div>
+  </div>
 
   <script type="module" src="./app.js"></script>
 </body>

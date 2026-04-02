@@ -124,6 +124,12 @@ button.active {
   line-height: 1.4;
 }
 
+.selected-name {
+  margin-bottom: 8px;
+  font-size: 12px;
+  color: #c7d3f6;
+}
+
 .tips {
   margin: 10px 0 0;
   font-size: 12px;
@@ -151,4 +157,76 @@ button.active {
   user-select: none;
   display: block;
   text-shadow: 0 0 6px #000;
+}
+
+.selection-tag {
+  position: fixed;
+  transform: translate(-50%, -120%);
+  background: rgba(9, 14, 28, 0.86);
+  color: #d7e4ff;
+  border: 1px solid #5b7ec3;
+  border-radius: 6px;
+  padding: 4px 8px;
+  font-size: 12px;
+  pointer-events: none;
+  z-index: 12;
+  white-space: nowrap;
+  text-shadow: none;
+}
+
+.selection-tag.hidden {
+  display: none;
+}
+
+
+.lcd-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(5, 8, 16, 0.7);
+  display: grid;
+  place-items: center;
+  z-index: 20;
+}
+
+.lcd-overlay.hidden {
+  display: none;
+}
+
+.lcd-card {
+  width: min(760px, 92vw);
+  background: #0f172a;
+  border: 1px solid #41517d;
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.lcd-card h3 {
+  margin: 0 0 12px;
+  color: #b8d0ff;
+}
+
+.lcd-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  font-size: 13px;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #334168;
+  border-radius: 8px;
+  background: #11182c;
+}
+
+.lcd-log {
+  margin-top: 10px;
+  min-height: 58px;
+  max-height: 180px;
+  overflow: auto;
+  border: 1px solid #334168;
+  border-radius: 8px;
+  padding: 8px;
+  font-size: 12px;
+  color: #d7def7;
+  line-height: 1.5;
+  background: #0b1122;
 }
